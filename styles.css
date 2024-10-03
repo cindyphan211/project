@@ -1,0 +1,272 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    background-image: url('images/background.png'); /* Replace with your image path */
+    background-size: cover; /* Adjust size as needed */
+    background-repeat: no-repeat; /* Prevent repetition */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Keep image fixed while scrolling (optional) */
+}
+
+/* Fluorescent Accent */
+h1, h2 {
+    color: #00FF00; /* Fluorescent green */
+    animation: textGlow 1s linear infinite;
+    font-size: 48px;
+}
+
+h2 {
+    text-shadow: 0 0 10px #00FF00; /* Add a glow effect */
+    animation: textFloat 1s ease-in-out infinite;
+    opacity: 0; /* Initially hidden */
+    transform: scale(0.8); /* Initially smaller */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Smooth transitions */
+}
+
+h2.in-view {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #111; /* Darker grey background for nav */
+    padding: 20px 40px;
+    text-align: center;
+    position: fixed; /* Make the navigation fixed */
+    top: 0; /* Position it at the top */
+    width: 100%; /* Make it full width */
+    z-index: 10; /* Ensure nav stays on top of other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+    background-image: url('images/background.png'); /* Add the background image */
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+nav.sticky {
+    background-color: #fff; /* Change background color on scroll */
+    color: #111; /* Change text color on scroll */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Align items horizontally */
+    justify-content: center; /* Center the navigation items */
+}
+
+nav ul li {
+    margin: 0 15px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    position: relative; /* For hover effects */
+}
+
+nav ul li:hover {
+    transform: scale(1.5); /* Slightly enlarges the list item */
+    background-color: #00FF00; /* Fluorescent green background on hover */
+    border-radius: 5px;
+}
+
+nav ul li a {
+    color: #fff; /* White text color for nav links */
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: color 0.3s ease; 
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #111; /* Dark grey text color on hover */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #00FF00;
+    transform: scaleX(0); /* Initially hidden */
+    transition: transform 0.3s ease;
+}
+
+nav ul li:hover a::after {
+    transform: scaleX(0.01); /* Show underline on hover */
+}
+
+/* Split Screen Intro Section */
+.split-screen {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+
+.intro-left {
+    flex: 1; /* Image side will be smaller (half size of the text side) */
+    padding: 20px;
+}
+
+.intro-right {
+    flex: 2; /* Text side will be larger */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.intro-left img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transform: scale(1.2); /* Scale up by 10% */
+
+}
+
+.intro-right h1 {
+    color: #00FF00; /* Fluorescent green */
+    font-size: 48px;
+}
+
+.intro-right p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 20px;
+}
+
+/* Professional Experience Section */
+section {
+    padding: 50px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Fluorescent Accent */
+h1, h2 {
+    color: #00FF00; /* Fluorescent green */
+}
+
+form {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #00FF00;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .split-screen {
+        flex-direction: column;
+    }
+
+    .intro-left, .intro-right {
+        flex: none;
+        width: 100%;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    input, textarea, button {
+        width: 90%;
+    }
+}
+
+/* ... your existing CSS ... */
+
+/* Professional Experience Section - Slideshow */
+.experience-slideshow {
+    position: relative; 
+    width: 80%; 
+    margin: 30px auto;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 400px; 
+    overflow: hidden; /* Hide any overflow from the image */
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; 
+    background-size: cover;
+    background-position: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slideshow-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Make the navigation full width */
+    padding: 0 20px; /* Add padding to the left and right */
+}
+
+.slideshow-nav button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 30px;
+    transition: background-color 0.5s ease;
+}
+
+.slideshow-nav button:hover {
+    background-color: rgba(241, 219, 21, 0.8);
+}
+
+.slideshow-nav .prev {
+    left: 1000px; /* Position the prev button to the left */
+}
+
+.slideshow-nav .next {
+    right: 500px; /* Position the next button to the right */
+}
